@@ -1,0 +1,15 @@
+ブロックIDは原則追加順です
+ 1: BeamRifle
+ 2: BeamMachinegun
+ 3: BeamCannon
+ 4: Shotgun
+ 5: GrenadeLauncher
+ 6: SMissile
+ 7: MMissile
+ 8: SubMachinegun
+ 9: Bazooka
+10: SniperRifle
+11: AssaultRifle
+12: BeamSaber
+13: LMissile
+14: NeedleMissile

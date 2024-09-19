@@ -1,0 +1,217 @@
+<Block>
+
+	<Debug>false</Debug>
+
+	<ID>3</ID>
+
+	<Name>BeamMachinegun</Name>
+	
+	<Mass>0.5</Mass>
+	
+	<!-- Additional keywords that can be used to search for this block
+	in the search tab of the block bar.
+	Blocks can always be searched for by name and author,
+	additional keywords can be specified here. -->
+	<SearchKeywords>
+		<Keyword>Beam,Machinegun</Keyword>
+	</SearchKeywords>
+
+	<ModuleMapperTypes>
+		<Key displayName="Fire" key="fire" default="C" />
+		<Key displayName="Reload" key="reload" default="R" />
+		<Slider displayName="Power" key="power" min="50" max="50" default="50" unclamped="false"/>
+		<Slider displayName="Rate Of Fire" key="rate-of-fire" min="10.0" max="10.0" default="10.0" unclamped="false"/>
+		<Slider displayName="Reload Time" key="reload-time" min="4.0" max="4.0" default="4.0" unclamped="false"/>
+		<Slider displayName="Magazine Capacity" key="capacity" min="10.0" max="10.0" default="10.0" unclamped="false"/>
+		<Toggle displayName="Hold To Shoot" key="hold-to-shoot" default="true" />
+		<Toggle displayName="Auto Reload" key="auto-reload" default="true" />
+		<Toggle displayName="Display Ammo Count" key="use-ammo-ui" default="false" />
+		<Slider displayName="Offset UI" key="offset-ui" min="0" max="10" default="0" unclamped="true"/>
+		<Slider displayName="Damage" key="damage" min="0" max="10000" default="400" unclamped="true" />
+		<Slider displayName="ExplodeRadius" key="radius" min="0" max="10" default="1" unclamped="true" />
+	</ModuleMapperTypes>
+		 
+	<Modules>
+		<BW2AmmoUIModule modid="b2487aed-283e-4c39-9a15-9c18937bfc22">
+			<UseAmmoUIToggle key="use-ammo-ui" />
+			<OffsetUISlider key="offset-ui" />
+			<RateOfFireSlider key="rate-of-fire" />
+			<useMagazine>true</useMagazine>
+			<Icon name="IconBM" />
+			<ReloadTimeSlider key="reload-time" />
+		</BW2AmmoUIModule>
+
+		<BW2AdWeaponConfigModule modid="b2487aed-283e-4c39-9a15-9c18937bfc22">
+			<DamageSlider key="damage" />
+			<ExplodeRadius key="radius" />
+		</BW2AdWeaponConfigModule>
+		
+		<AdBlockProp modid="a4577151-2173-4084-a456-4b29e8d3e01f">
+			<BlockState>
+				<!-- Deault = 15000.if set 0,become infinity -->
+				<JointStr>30000</JointStr>
+				<!-- Deault = 0.6 -->
+				<FrictionStr>0.1</FrictionStr>
+				<!-- Deault = Discrete, select from Discrete, Continuous, ContinuousDynamic -->
+				<CollisionType>Discrete</CollisionType>
+				<!-- Deault = Average, select from Average, Maximum, Minimum, Mutiply
+				<FrictionCombineType>Average</FrictionCombineType> -->
+				<!-- Deault = Average, select from Average, Maximum, Minimum, Mutiply
+				<BounceCombineType>Average</BounceCombineType> -->
+			</BlockState>
+			<SpringState>
+				<!-- Deault = Locked, select from Locked, Limited, Free
+				<MotionX>Locked</MotionX>
+				<MotionY>Limited</MotionY>
+				<MotionZ>Locked</MotionZ> -->
+				<!-- Deault = 0
+				<SpringStr>1000</SpringStr> -->
+				<!-- Deault = 0
+				<DamperStr>200</DamperStr> -->
+				<!-- Deault = 0
+				<LimitDistance>0.01</LimitDistance> -->
+			</SpringState>
+			<RotateState>
+				<!-- Deault = Locked, select from Locked, Limited, Free
+				<AngularMotionX>Locked</AngularMotionX>
+				<AngularMotionY>Free</AngularMotionY>
+				<AngularMotionZ>Locked</AngularMotionZ> -->
+				<!-- Deault = 0
+				<SpringStr>0</SpringStr> -->
+				<!-- Deault = 0
+				<DamperStr>0</DamperStr> -->
+				<!-- Deault = 0
+				<LimitAngular>0</LimitAngular> -->
+			</RotateState>
+		</AdBlockProp>
+		
+		<AdShootingProp modid="a4577151-2173-4084-a456-4b29e8d3e01f">
+			<!--ShootingState is Projectile setting -->
+			<ShootingState>
+			
+				<Colliders>
+					<CapsuleCollider>
+						<Rotation x="0" y="0" z="0" />
+						<Capsule direction="Z" radius="0.3" height="0.6" />
+					</CapsuleCollider>
+				</Colliders>
+				
+				<Mesh name="BMProjectile"> 
+					<Position x="0.0" y="0.0" z="1.5" />
+					<Rotation x="0.0" y="0.0" z="0" />
+					<Scale x="0.4" y="0.4" z="1.0" />
+				</Mesh>
+				
+				<Texture name="BMProjectile_tex" />
+				
+				
+				<Mass>0.1</Mass>
+				<Drag>0.0</Drag>
+				<AngularDrag>100</AngularDrag>
+				<IgnoreGravity>True</IgnoreGravity>
+				<EntityDamage>100</EntityDamage>
+				<BlockDamage>1</BlockDamage>
+				<Attaches>true</Attaches>
+				<CollisionTypeS>ContinuousDynamic</CollisionTypeS>
+				
+			</ShootingState>
+			
+			<FireKey key="fire" />
+			<PowerSlider key="power" />
+			<RateOfFireSlider key="rate-of-fire" />
+			<HoldToShootToggle key="hold-to-shoot" />
+			
+			<ProjectileStart>
+				<Position x="0.0" y="0.0" z="2.3" />
+				<Rotation x="0.0" y="0.0" z="0.0" />
+				<Scale x="1.0" y="1.0" z="1.0" />
+			</ProjectileStart>
+			
+			<ShotFlashPosition>
+				<Position x="0.0" y="0.0" z="1.7" />
+				<Rotation x="0.0" y="0.0" z="0.0" />
+				<Scale x="1.0" y="1.0" z="1.0" />
+			</ShotFlashPosition>
+			
+			<ShowPlaceholderProjectile>false</ShowPlaceholderProjectile>
+			
+			<DefaultAmmo>1200</DefaultAmmo>
+			<AmmoType>Fire</AmmoType>
+			<ProjectilesExplode>true</ProjectilesExplode>
+			<ExplodeRadius>1.0</ExplodeRadius>
+			<ExplodePower>50</ExplodePower>
+			<ExplodeUpPower>0.0</ExplodeUpPower>
+			
+			<SupportsExplosionGodTool>False</SupportsExplosionGodTool>
+			<ProjectilesDespawnImmediately>false</ProjectilesDespawnImmediately>
+			
+			<AssetBundleName name="BW2" />
+			<!-- Prefab's name -->
+      		<ExplodeEffect>YellowSpark</ExplodeEffect>
+			<ShotFlashEffect>YellowBeamFire</ShotFlashEffect>
+			<BulletEffect>YellowBullet</BulletEffect>
+			
+			<RecoilMultiplier>0.2</RecoilMultiplier>
+			<RandomDiffusion>0.01</RandomDiffusion>
+			
+			<PoolSize>80</PoolSize>
+			
+			<useMagazine>true</useMagazine>
+			<MagazineInfo>
+				<MagazineCapacitySlider key="capacity" />
+				<ReloadTimeSlider key="reload-time" />
+				<useReloadKey>true</useReloadKey>
+				<ReloadKey key="reload" />
+				<forceAutoReload>false</forceAutoReload>
+				<useAutoReloadToggle>true</useAutoReloadToggle>
+				<AutoReloadToggle key="auto-reload" />
+			</MagazineInfo>
+			
+			<Sounds>
+				<AudioClip name="BMshot" />
+			</Sounds>
+			<HitSounds>
+				<AudioClip name="BMhit" />
+			</HitSounds>
+			
+			
+		</AdShootingProp>
+		
+	</Modules>
+	
+	
+	<Mesh name="BeamMachinegun">
+		<!-- Must be defined as a resource in the mod.xml. -->
+		<Position x="0.0" y="0.0" z="0.8" />
+		<Rotation x="0.0" y="0.0" z="0.0" />
+		<Scale x="0.25" y="0.25" z="0.25" />
+	</Mesh>
+	
+	<Texture name="BeamMachinegunBody_tex" /> 
+	
+	<Icon>
+		<Position x="-0.1" y="-0.05" z="-1.0" />
+		<Rotation x="-30.0" y="120.0" z="0.0" />
+		<Scale x="0.18" y="0.18" z="0.18" />
+	</Icon>
+	
+	<Colliders>
+        <CapsuleCollider>
+            <Position x="0.0" y="0.0" z="0.4" />
+            <Rotation x="-90.0" y="0.0" z="0.0" />
+            <Capsule direction="Y" radius="0.2" height="0.4" />
+        </CapsuleCollider>
+	
+	</Colliders>
+	
+	<BasePoint hasAddingPoint="true">
+		<Stickiness enabled="true" radius="0.4" />
+		<Motion x="false" y="false" z="false" /> 
+	</BasePoint>
+	
+	<AddingPoints>
+
+	</AddingPoints>
+
+
+</Block>

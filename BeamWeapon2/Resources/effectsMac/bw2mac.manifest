@@ -1,0 +1,56 @@
+ManifestFileVersion: 0
+CRC: 259379143
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 24c8bf69558432409463c887549e5201
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2606b645d2e449431b688e610b790295
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 96
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/BW2/SRTrail.prefab
+- Assets/BW2/BlueBeamFire.prefab
+- Assets/BW2/SmokeBulletEffect.prefab
+- Assets/BW2/PinkSaber.prefab
+- Assets/BW2/LargeMissileTrail.prefab
+- Assets/BW2/MissileTrail.prefab
+- Assets/BW2/ShotgunBullet.prefab
+- Assets/BW2/BlueDamage.prefab
+- Assets/BW2/YellowBeamFire.prefab
+- Assets/BW2/YellowBullet.prefab
+- Assets/BW2/PinkDamage.prefab
+- Assets/BW2/BigExplode.prefab
+- Assets/BW2/NothingEffect.prefab
+- Assets/BW2/UltraExplode.prefab
+- Assets/BW2/GrenadeSmoke.prefab
+- Assets/BW2/YellowTrail.prefab
+- Assets/BW2/FireSmoke.prefab
+- Assets/BW2/YellowSpark.prefab
+- Assets/BW2/SmallExplode.prefab
+- Assets/BW2/Orbitron Medium.ttf
+- Assets/BW2/PinkBeamFire.prefab
+- Assets/BW2/BlueTrail.prefab
+- Assets/BW2/PinkTrail.prefab
+Dependencies: []

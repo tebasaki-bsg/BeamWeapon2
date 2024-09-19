@@ -1,0 +1,255 @@
+<Block>
+	<!-- Block definition file.
+		 Optional elements are mostly out-commented.
+		 Remember to insert appropriate values where specified,
+		 the mod will not load correctly until you do.
+		 Restart the game to load the block once this file is completed.
+		 
+		 Values that should always be changed are marked with "TODO".
+		 
+		 See the documentation for further information on any of these elements.
+	-->
+	
+	<!-- Optional. Enables debug mode.
+		 In debug mode, colliders and adding points are shown visually
+		 to assist in positioning them correctly.
+		 (Capsule colliders are shown as cubes, imagine their edges were rounded off.) -->
+	<Debug>false</Debug>
+	
+	<!-- ID of your block. See "Note on IDs" in Mod.xml.
+		 The ID must be unique among blocks in your mod.
+		 It may conflict with blocks of other mods, the mod loader handles this.
+		 The easiest way of assigning IDs is to use 1, 2, 3, etc.-->
+	<ID>10</ID>
+	
+	<!-- Name of the block, shown in the user interface. -->
+	<Name>Bazooka</Name>
+	
+	<!-- TODO: Change the mass to something appropriate -->
+	<Mass>0.5</Mass>
+	
+	<!-- Additional keywords that can be used to search for this block
+		 in the search tab of the block bar.
+		 
+		 Blocks can always be searched for by name and author,
+		 additional keywords can be specified here. -->
+	<!--<SearchKeywords>
+		<Keyword>Some Keyword</Keyword>
+	</SearchKeywords>-->
+	
+	<!-- Optional.
+		 Only has an effect if the OnFlip method in the block script is not overriden.
+		 
+	     Causes the Flipped property for the script to be set correctly. This is also used by
+		 certain modules, like Spinning or Steering.
+		 If an Arrow element is included, it is automatically flipped too. -->
+	<!-- <CanFlip>true</CanFlip> -->
+	
+	<!-- Specify that this block is a replacement of an old modded block.
+		 If this block has an equivalent that was created with the old community mod/block loader,
+		 specifying its id here will make the game load this block when loading machines that contain the old block. -->
+	<!-- <Replaces>410</Replaces> -->
+	
+	<!-- Normally, when a machine with a modded block is loaded, but that block is not loaded, the block will be ignored.
+		 If the block has a fallback specified here, the fallback block is loaded instead in this scenario.
+		 
+		 Valid values are entries of the BlockType enum or the numeric ID of a block. Only normal blocks can be specified as
+		 fallback, not modded blocks. -->
+	<!--<Fallback>DoubleWoodenBlock</Fallback>-->
+	
+	<!-- <Script>Full Name of a BlockScript class, optional.</Script> -->
+	
+	<!-- Blocks can have certain predefined behaviour added without any custom code.
+		 These behaviours are called modules.
+		 The Shooting, Spewing, Spinning, and Steering modules are included by default
+		 and mods can also add new modules.
+		 Check the documentation for more information on how to use modules. -->
+	<ModuleMapperTypes>
+		<Key displayName="Fire" key="fire" default="C" />
+		<Slider displayName="Power" key="power" min="625" max="625" default="625" unclamped="false"/>
+		<Slider displayName="Rate Of Fire" key="rate-of-fire" min="0.25" max="0.25" default="0.25" unclamped="false"/>
+		<Toggle displayName="Hold To Shoot" key="hold-to-shoot" default="true" />
+		<Toggle displayName="Display Ammo Count" key="use-ammo-ui" default="false" />
+		<Slider displayName="Offset UI" key="offset-ui" min="0" max="10" default="0" unclamped="true"/>
+		<Slider displayName="Damage" key="damage" min="0" max="10000" default="4000" unclamped="true" />
+		<Slider displayName="ExplodeRadius" key="radius" min="0" max="10" default="6" unclamped="true" />
+	</ModuleMapperTypes>
+
+	<Modules>
+		<BW2AmmoUIModule modid="b2487aed-283e-4c39-9a15-9c18937bfc22">
+			<UseAmmoUIToggle key="use-ammo-ui" />
+			<OffsetUISlider key="offset-ui" />
+			<RateOfFireSlider key="rate-of-fire" />
+			<useMagazine>false</useMagazine>
+			<Icon name="IconBZ" />
+			<ReloadTimeSlider key="reload-time" />
+		</BW2AmmoUIModule>
+
+		<BW2AdWeaponConfigModule modid="b2487aed-283e-4c39-9a15-9c18937bfc22">
+			<DamageSlider key="damage" />
+			<ExplodeRadius key="radius" />
+		</BW2AdWeaponConfigModule>
+
+		<AdBlockProp modid="a4577151-2173-4084-a456-4b29e8d3e01f">
+			<BlockState>
+				<!-- Deault = 15000.if set 0,become infinity -->
+				<JointStr>30000</JointStr>
+				<!-- Deault = 0.6 -->
+				<FrictionStr>0.1</FrictionStr>
+				<!-- Deault = Discrete, select from Discrete, Continuous, ContinuousDynamic -->
+				<CollisionType>Discrete</CollisionType>
+			</BlockState>
+			<SpringState>
+			</SpringState>
+			<RotateState>
+			</RotateState>
+		</AdBlockProp>
+
+
+		<AdShootingProp modid="a4577151-2173-4084-a456-4b29e8d3e01f">
+
+			<ShootingState>
+
+				<Colliders>
+					<CapsuleCollider>
+						<Position x="0.0" y="0.0" z="0.0" />
+						<Rotation x="0.0" y="0.0" z="0.0" />
+						<Capsule direction="Z" radius="0.1" height="1.0" />
+					</CapsuleCollider>
+				</Colliders>
+
+				<Mesh name="BZProjectile">
+					<Position x="0.0" y="0.0" z="0.0" />
+					<Rotation x="0.0" y="0" z="0" />
+					<Scale x="0.18" y="0.18" z="0.2" />
+				</Mesh>
+
+				<Texture name="BZProjectile_tex" />
+
+
+				<Mass>2.5</Mass>
+				<Drag>0.25</Drag>
+				<AngularDrag>3.0</AngularDrag>
+				<IgnoreGravity>False</IgnoreGravity>
+				<EntityDamage>100</EntityDamage>
+				<BlockDamage>1</BlockDamage>
+				<Attaches>false</Attaches>
+				<CollisionTypeS>ContinuousDynamic</CollisionTypeS>
+
+			</ShootingState>
+
+			<FireKey key="fire" />
+			<PowerSlider key="power" />
+			<RateOfFireSlider key="rate-of-fire" />
+			<HoldToShootToggle key="hold-to-shoot" />
+
+			<ProjectileStart>
+				<Position x="0.0" y="0.0" z="1.6" />
+				<Rotation x="0" y="0.0" z="0.0" />
+				<Scale x="1.0" y="1.0" z="1.0" />
+			</ProjectileStart>
+
+			<ShotFlashPosition>
+				<Position x="0.0" y="0.0" z="0.4" />
+				<Rotation x="0.0" y="0.0" z="0.0" />
+				<Scale x="1.0" y="1.0" z="1.0" />
+			</ShotFlashPosition>
+
+
+			<ShowPlaceholderProjectile>false</ShowPlaceholderProjectile>
+			<PlaceholderProjectileUseCollider>false</PlaceholderProjectileUseCollider>
+
+			<DefaultAmmo>5</DefaultAmmo>
+			<AmmoType>Fire</AmmoType>
+			<ProjectilesExplode>true</ProjectilesExplode>
+			<ExplodeRadius>8.0</ExplodeRadius>
+			<ExplodePower>50.0</ExplodePower>
+			<ExplodeUpPower>0.0</ExplodeUpPower>
+			<useExplodeRotation>false</useExplodeRotation>
+
+			<SupportsExplosionGodTool>False</SupportsExplosionGodTool>
+			<ProjectilesDespawnImmediately>false</ProjectilesDespawnImmediately>
+
+			<AssetBundleName name="BW2" />
+			<ExplodeEffect>UltraExplode</ExplodeEffect>
+			<ShotFlashEffect>FireSmoke</ShotFlashEffect>
+			<BulletEffect>SmokeBulletEffect</BulletEffect>
+
+			<RecoilMultiplier>0.3</RecoilMultiplier>
+
+			<PoolSize>30</PoolSize>
+
+			<Sounds>
+				<AudioClip name="BZshot" />
+			</Sounds>
+			<HitSounds>
+				<AudioClip name="BZhit" />
+			</HitSounds>
+
+		</AdShootingProp>
+
+
+	</Modules>
+	
+	<!-- Include to make block take damage. -->
+	<!-- <Health>20</Health> -->
+	
+	<!-- Optional.
+		 The game generates "stripped" versions of the prefab,
+		 these have some components and child objects removed and are used in MP where the full
+		 object is not always necessary.
+		 If you find that this stripping removes some components or child objects that you added to the prefab manually
+		 and need on the stripped version, you can include a list of objects to keep using this. -->
+	<!-- <KeepWhenStripped>
+		<Object>SomeObjectName</Object>
+	</KeepWhenStripped> -->
+	
+	<!-- Include to enable block to burn.
+		 The Trigger element is optional. -->
+	<!-- <FireInteraction burnDuration="5">
+		<SphereTrigger>
+			<Position x="0" y="0" z="0.61" />
+			<Radius>1.5</Radius>
+		</SphereTrigger>
+	</FireInteraction> -->
+	
+	<!-- Include to make block freezable. -->
+	<!-- <IceInteraction /> -->
+	
+	<!-- Optionally specify type of damage done to entities.
+		 Can be one of "Blunt", "Sharp", "Fire" -->
+	<!-- <DamageType>Blunt</DamageType> -->
+
+	<Mesh name="BeamCannon">
+		<Position x="0.0" y="0.0" z="0.4" />
+		<Rotation x="0.0" y="0.0" z="0.0" />
+		<Scale x="0.4" y="0.4" z="0.32" />
+	</Mesh>
+
+	<Texture name="BeamCannonBody_tex" />
+
+	<Icon>
+		<Position x="-0.1" y="-0.05" z="-1.0" />
+		<Rotation x="-30.0" y="60.0" z="0.0" />
+		<Scale x="0.2" y="0.2" z="0.14" />
+	</Icon>
+	
+	
+	<Colliders>
+		<CapsuleCollider>
+			<Position x="0.0" y="0.0" z="0.5" />
+			<Rotation x="-90.0" y="0.0" z="0.0" />
+			<Capsule direction="Y" radius="0.2" height="0.5" />
+		</CapsuleCollider>
+	</Colliders>
+	
+	<BasePoint hasAddingPoint="true">
+		<Stickiness enabled="true" radius="0.4" />
+		<!-- Can only have motion if sticky -->
+		<Motion x="false" y="false" z="false" /> <!-- Optional -->
+	</BasePoint>
+	
+	<AddingPoints>
+		
+	</AddingPoints>
+</Block>

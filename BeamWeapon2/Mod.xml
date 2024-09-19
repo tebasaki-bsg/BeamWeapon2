@@ -1,0 +1,222 @@
+<Mod>
+	<!-- Mod manifest file.
+		 You should at the very least replace the values marked with FIX.
+		 
+		 See the documentation for further information on any of these elements.
+	-->
+
+	<!-- General information about the mod. -->
+	<Name>BeamWeaponsVer2</Name>
+	<Author>Tebasaki</Author> <!-- FIX: Insert your name here. -->
+	<!-- Major.Minor.Build -->
+	<Version>1.0.2</Version>
+	<LoadOrder>1</LoadOrder><!-- ACMの後にロード -->
+	
+	<Description>
+A newly created mod. <!-- FIX: Insert a short description here. -->
+	</Description>
+	
+	<!-- Square icon of the mod. Texture defined in the Resources section.
+		 This is displayed in the mod list and, if WorkshopThumbnail is not set, used as thumbnail when uploaded to the Steam workshop. -->
+	<!-- <Icon name="icon" /> -->
+	
+	<!-- Texture resource used as thumbnail when uploading the mod to the workshop.
+		 If this is not present, the Icon texture is used instead.
+		 This can be set to have different icons in the mod list and the workshop. -->
+	<!-- <WorkshopThumbnail name="thumbnail" /> -->
+	
+	<!-- Enables reloading of various values at runtime. This is normally triggered automatically when a file is changed,
+		 you can also trigger it by pressing Ctrl+H.
+		 Reloadable values include:
+			- Colliders
+			- Adding Points
+			- FireInteractions
+			- Mesh Transforms
+		 
+		 Also gives some extra information about warnings and errors parsing the XML files, at the cost
+		 of a slight increase in loading time for mods with many XML elements.
+		 
+		 It is generally recommended to turn this on while developing the mod, but keep it off for any releases.
+		 Important: You cannot upload mods to Steam or WeGame while Debug is turned on.
+		 
+		 Note: This value is independent of the Debug values for specific Blocks and Entities.-->
+	<Debug>true</Debug>
+	
+	<!-- Whether the mod can be used in MP or only in SP.
+		 SP-only mods are easier to write but obviously more limited in their uses.
+		 SP-only mods will be loaded when the first singleplayer level is loaded.
+		 Once an SP-only mod was loaded, it is impossible to start a multiplayer game until the game is restarted since the mod can't be unloaded again. -->
+	<MultiplayerCompatible>true</MultiplayerCompatible>
+	
+	<!-- Include this to make the mod be loaded in the title screen.
+		 Normally mods will only be loaded when the actual game is entered
+		 (i.e. when starting/joining an MP session or entering an SP level).
+		 
+		 Only use this if there is a good reason for it!
+		 Mods that are immediately loaded when starting the game are significantly
+		 less user-friendly, whenever the mod is disabled the game needs to be restarted.-->
+	<!-- <LoadInTitleScreen /> -->
+	
+	<!-- Note on IDs -->
+	<!-- Many elements of your mod need to have an ID assigned that will identify them.
+		 This includes blocks, entities, triggers and events.
+		 IDs are always integers (except the mod ID, that is an unsigned long).
+		 
+		 Except for the ID of the mod itself, they are always local to the mod.
+		 That means you do not need to worry about any conflicts with other mods, because
+		 the mod loader identifies these elements using the mod ID and the element ID.
+		 
+		 You should not change IDs after you have published your mod in any way.
+		 If you do, saved machines and levels will not load the elements correctly anymore.
+		 
+		 Do not rely on the game using the IDs you specified internally in fields such as in BlockBehaviour.BlockID.
+		 In many cases (e.g. blocks and entities) the game will identify your elements by another ID computed based
+		 on the mod and element IDs.
+	-->
+	
+	<!-- Any assemblies that contain code for your mod.
+		 If an assembly listed here contains an implementation of the Mod class,
+		 its OnLoad method will be called.
+		 BlockScripts for your blocks (if any) will be searched for in these assemblies.
+		 The path attribute is relative to the location of this file. -->
+	<Assemblies>
+		<!-- <Assembly path="SomeAssembly.dll" /> -->
+		<!-- <ScriptAssembly path="SomeAssembly/" /> -->
+		<Assembly path="BW2_assem.dll" />
+	</Assemblies>
+	
+	<!-- Any blocks your mod adds to the game.
+		 The path attribute is relative to the location of this file. -->
+	<Blocks>
+		<Block path="HPcore.xml" />				<!--ID:1 -->
+		<Block path="BeamRifle.xml" />			<!--ID:2 -->
+		<Block path="BeamMachinegun.xml" />		<!--ID:3 -->
+		<Block path="BeamCannon.xml" />			<!--ID:4 -->
+		<Block path="Shotgun.xml" />			<!--ID:5 -->
+		<Block path="GrenadeLauncher.xml" />	<!--ID:6 -->
+		<Block path="SMissile.xml" />			<!--ID:7 -->
+		<Block path="MMissile.xml" />			<!--ID:8 -->
+		<Block path="SubMachinegun.xml" />		<!--ID:9 -->
+		<Block path="Bazooka.xml" />			<!--ID:10 -->
+		<Block path="SniperRifle.xml" />		<!--ID:11 -->
+		<Block path="AssaultRifle.xml" />		<!--ID:12 -->
+		<Block path="BeamSaber.xml" />			<!--ID:13 -->
+		<Block path="LMissile.xml" />			<!--ID:14 -->
+		<Block path="NeedleMissile.xml" />		<!--ID:15 -->
+	</Blocks>
+	
+	<!-- Any entities (level objects) your mod adds to the game.
+		 The path attribute is relative to the location of this file. -->
+	<Entities>
+		<!-- <Entity path="SomeEntity.xml" /> -->
+	</Entities>
+	
+	<!-- Any logic trigger types your mod adds to the game. -->
+	<!-- See the ModTriggers class for info on how to activate your triggers. -->
+	<Triggers>
+		
+	</Triggers>
+	
+	<!-- Any logic event types your mod adds to the game. -->
+	<!-- See the ModEvents class for info on how to handle your events being activated. -->
+	<Events>
+		
+	</Events>
+	
+	<!-- Access these keys using the ModKeys class. -->
+	<Keys>
+		
+	</Keys>
+	
+	<!-- The mod loader will automatically make all resources listed here available
+		 to your mod via the ModResource class.
+		 The path attribute is relative to the Resources/ directory.
+		 You also need to list resources used in your Blocks and Entities.
+		 Available resource types are Mesh, Texture, AudioClip, and AssetBundle. -->
+	<Resources>
+		<!-- <Mesh name="some-mesh-name" path="some_mesh_file.obj" /> -->
+		<!-- <Texture name="some-texture-name" path="some_texture_file.png" /> -->
+
+		<Mesh name="HPcore" path="object/HPcore.obj" />
+		<Mesh name="BeamRifle" path="object/BeamRifle.obj" />
+		<Mesh name="BeamMachinegun" path="object/BeamMachinegun.obj" />
+		<Mesh name="BeamCannon" path="object/BeamCannon.obj" />
+		<Mesh name="GrenadeLauncher" path="object/GrenadeLauncher.obj" />
+		<Mesh name="SMLauncher" path="object/SMLauncher.obj" />
+		<Mesh name="MMLauncher" path="object/MMLauncher.obj" />
+		<Mesh name="BMProjectile" path="object/BMProjectile.obj" />
+		<Mesh name="BZProjectile" path="object/BZProjectile.obj" />
+		<Mesh name="nothing" path="object/nothing.obj" />
+		<Mesh name="GrenadeProjectile" path="object/GrenadeProjectile.obj" />
+		<Mesh name="SMProjectile" path="object/SMProjectile.obj" />
+		<Mesh name="MMProjectile" path="object/MMProjectile.obj" />
+		<Mesh name="AssaultRifle" path="object/AssaultRifle.obj" />
+		<Mesh name="BeamSaber" path="object/BeamSaber.obj" />
+		<Mesh name="LMProjectile" path="object/LMProjectile.obj" />
+		<Mesh name="LMLauncher" path="object/LMLauncher.obj" />
+		<Mesh name="NMProjectile" path="object/NMProjectile.obj" />
+		<Mesh name="NMLauncher" path="object/NMLauncher.obj" />
+
+		<Texture name="HPcore_tex" path="png/HPcore_tex.png" />
+		<Texture name="BeamRifleBody_tex" path="png/BeamRifleBody_tex.png" />
+		<Texture name="BeamMachinegunBody_tex" path="png/BeamMachinegunBody_tex.png" />
+		<Texture name="BeamCannonBody_tex" path="png/BeamCannonBody_tex.png" />
+		<Texture name="GrenadeLauncher_tex" path="png/GrenadeLauncher_tex.png" />
+		<Texture name="BZProjectile_tex" path="png/BZProjectile_tex.png" />
+		<Texture name="BeamSaberBody_tex" path="png/BeamSaberBody_tex.png" />
+		<Texture name="SMLauncher_tex" path="png/SMLauncher_tex.png" />
+		<Texture name="MMLauncher_tex" path="png/MMLauncher_tex.png" />
+		<Texture name="Projectile_tex" path="png/Projectile_tex.png" />
+		<Texture name="BMProjectile_tex" path="png/BMProjectile_tex.png" />
+		<Texture name="GrenadeProjectile_tex" path="png/GrenadeProjectile_tex.png" />
+		<Texture name="SMProjectile_tex" path="png/SMProjectile_tex.png" />
+		<Texture name="MMProjectile_tex" path="png/MMProjectile_tex.png" />
+		<Texture name="SRProjectile_tex" path="png/SRProjectile_tex.png" />
+		<Texture name="SMGProjectile_tex" path="png/SMGProjectile_tex.png" />
+		<Texture name="LMLauncher_tex" path="png/LMLauncher_tex.png" />
+		<Texture name="LMProjectile_tex" path="png/LMProjectile_tex.png" />
+		<Texture name="NMLauncher_tex" path="png/NMLauncher_tex.png" />
+		<Texture name="NMProjectile_tex" path="png/NMProjectile_tex.png" />
+
+
+		<Texture name="icon" path="png/icon.png" />
+		<Texture name="thumbnail" path="png/thumbnail.png" />
+
+		<Texture name="IconBR" path="png/icon/IconBR.png" />
+		<Texture name="IconBM" path="png/icon/IconBM.png" />
+		<Texture name="IconBC" path="png/icon/IconBC.png" />
+		<Texture name="IconSG" path="png/icon/IconSG.png" />
+		<Texture name="IconGL" path="png/icon/IconGL.png" />
+		<Texture name="IconSM" path="png/icon/IconSM.png" />
+		<Texture name="IconMM" path="png/icon/IconMM.png" />
+		<Texture name="IconSMG" path="png/icon/IconSMG.png" />
+		<Texture name="IconBZ" path="png/icon/IconBZ.png" />
+		<Texture name="IconSR" path="png/icon/IconSR.png" />
+		<Texture name="IconAR" path="png/icon/IconAR.png" />
+		<Texture name="IconLM" path="png/icon/IconLM.png" />
+		<Texture name="IconNM" path="png/icon/IconNM.png" />
+
+		<AudioClip name="BRshot" path="sound/BeamRifle2.wav" />
+		<AudioClip name="BRhit" path="sound/Bomb.wav" />
+		<AudioClip name="BMshot" path="sound/BeamMachinegun.wav" />
+		<AudioClip name="BMhit" path="sound/Beamhit.wav" />
+		<AudioClip name="BCshot" path="sound/BeamCannon.wav" />
+		<AudioClip name="SGshot" path="sound/ShotgunFire.wav" />
+		<AudioClip name="SGhit" path="sound/Shotgunhit.wav" />
+		<AudioClip name="GLshot" path="sound/GrenadeFire.wav" />
+		<AudioClip name="Missileshot" path="sound/MissileLaunch.wav" />
+		<AudioClip name="MissileFly" path="sound/MissileFly.wav" />
+		<AudioClip name="SMGshot" path="sound/SubMachinegun.wav" />
+		<AudioClip name="BZshot" path="sound/BazookaFire.wav" />
+		<AudioClip name="BZhit" path="sound/BigBomb.wav" />
+		<AudioClip name="ARshot" path="sound/AssaultRifle.wav" />
+
+		<AssetBundle name="BW2" path="effects/bw2" />
+		<AssetBundle name="BW2Mac" path="effectsMac/bw2mac" />
+	</Resources>
+
+
+<!-- This value is automatically generated. Do not change it or you may break machine&level save files. -->
+<ID>b2487aed-283e-4c39-9a15-9c18937bfc22</ID>
+
+</Mod>

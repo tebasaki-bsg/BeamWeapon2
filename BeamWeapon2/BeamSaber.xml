@@ -1,0 +1,242 @@
+<Block>
+	<!-- Block definition file.
+		 Optional elements are mostly out-commented.
+		 Remember to insert appropriate values where specified,
+		 the mod will not load correctly until you do.
+		 Restart the game to load the block once this file is completed.
+		 
+		 Values that should always be changed are marked with "TODO".
+		 
+		 See the documentation for further information on any of these elements.
+	-->
+	
+	<!-- Optional. Enables debug mode.
+		 In debug mode, colliders and adding points are shown visually
+		 to assist in positioning them correctly.
+		 (Capsule colliders are shown as cubes, imagine their edges were rounded off.) -->
+	<Debug>false</Debug>
+	
+	<!-- ID of your block. See "Note on IDs" in Mod.xml.
+		 The ID must be unique among blocks in your mod.
+		 It may conflict with blocks of other mods, the mod loader handles this.
+		 The easiest way of assigning IDs is to use 1, 2, 3, etc.-->
+	<ID>13</ID>
+	
+	<!-- Name of the block, shown in the user interface. -->
+	<Name>BeamSaber</Name>
+	
+	<!-- TODO: Change the mass to something appropriate -->
+	<Mass>0.25</Mass>
+	
+	<!-- Additional keywords that can be used to search for this block
+		 in the search tab of the block bar.
+		 
+		 Blocks can always be searched for by name and author,
+		 additional keywords can be specified here. -->
+	<!--<SearchKeywords>
+		<Keyword>Some Keyword</Keyword>
+	</SearchKeywords>-->
+	
+	<!-- Optional.
+		 Only has an effect if the OnFlip method in the block script is not overriden.
+		 
+	     Causes the Flipped property for the script to be set correctly. This is also used by
+		 certain modules, like Spinning or Steering.
+		 If an Arrow element is included, it is automatically flipped too. -->
+	<!-- <CanFlip>true</CanFlip> -->
+	
+	<!-- Specify that this block is a replacement of an old modded block.
+		 If this block has an equivalent that was created with the old community mod/block loader,
+		 specifying its id here will make the game load this block when loading machines that contain the old block. -->
+	<!-- <Replaces>410</Replaces> -->
+	
+	<!-- Normally, when a machine with a modded block is loaded, but that block is not loaded, the block will be ignored.
+		 If the block has a fallback specified here, the fallback block is loaded instead in this scenario.
+		 
+		 Valid values are entries of the BlockType enum or the numeric ID of a block. Only normal blocks can be specified as
+		 fallback, not modded blocks. -->
+	<!--<Fallback>DoubleWoodenBlock</Fallback>-->
+
+	<!--<Script>BW2Space.BW2AdSaberBlockScript</Script>--><!-- NameSpace.class (class:BlockScript)-->
+	
+	<!-- Blocks can have certain predefined behaviour added without any custom code.
+		 These behaviours are called modules.
+		 The Shooting, Spewing, Spinning, and Steering modules are included by default
+		 and mods can also add new modules.
+		 Check the documentation for more information on how to use modules. -->
+	<ModuleMapperTypes>
+		<Key displayName="SaberKey" key="SaberKey" default="B" />
+		<Toggle displayName="Toggle Mode" key="ToggleMode" default="false" />
+		<Toggle displayName="Self Damage" key="SelfDamage" default="false" />
+		<Slider displayName="Damage" key="damage" min="0" max="100" default="20" unclamped="true" />
+		<Toggle displayName="BW2SelfDamage" key="bw2selfdamage" default="false" />
+		
+	</ModuleMapperTypes>
+
+	<Modules>
+		
+		<BW2AdSaberModule modid="b2487aed-283e-4c39-9a15-9c18937bfc22">
+			<DamageSlider key="damage" />
+			<BW2SelfDamage key="bw2selfdamage" />
+		</BW2AdSaberModule>
+
+		<AdBlockProp modid="a4577151-2173-4084-a456-4b29e8d3e01f">
+			<BlockState>
+				<!-- Deault = 15000.if set 0,become infinity -->
+				<JointStr>25000</JointStr>
+				<!-- Deault = 0.6, 0 to 1 -->
+				<FrictionStr>0.6</FrictionStr>
+				<!-- Deault = 0, 0 to 1 -->
+				<BounceStr>0</BounceStr>
+				<!-- Deault = Discrete, select from Discrete, Continuous, ContinuousDynamic -->
+				<CollisionType>Discrete</CollisionType>
+				<!-- Deault = Average, select from Average, Maximum, Minimum, Mutiply -->
+				<FrictionCombineType>Average</FrictionCombineType>
+				<!-- Deault = Average, select from Average, Maximum, Minimum, Mutiply -->
+				<BounceCombineType>Multiply</BounceCombineType>
+				<!-- Deault = 0 -->
+				<ProjectionDistance>0.05</ProjectionDistance>
+				<!-- Deault = 0 -->
+				<ProjectionAngle>1.0</ProjectionAngle>
+				<!-- Deault = None, select from None, PositionAndRotation -->
+				<JointProjectionMode>PositionAndRotation</JointProjectionMode>
+				<BlockColor r="1.0" g="1.0" b="1.0" />
+			</BlockState>
+			<SpringState>
+			</SpringState>
+			<RotateState>
+				<!-- Deault = Locked, select from Locked, Limited, Free -->
+				<AngularMotionX>Locked</AngularMotionX>
+				<AngularMotionY>Locked</AngularMotionY>
+				<AngularMotionZ>Locked</AngularMotionZ>
+				<!-- Deault = 0 -->
+				<SpringStr>0</SpringStr>
+				<!-- Deault = 0 -->
+				<DamperStr>0</DamperStr>
+				<!-- Deault = 0.if set 0,become infinity  -->
+				<LimitSpringStr>0</LimitSpringStr>
+				<!-- Deault = 0  -->
+				<LimitDamperStr>0</LimitDamperStr>
+			</RotateState>
+		</AdBlockProp>
+		<AdSaberProp modid="a4577151-2173-4084-a456-4b29e8d3e01f">
+			<EntityDamage>10000</EntityDamage>
+			<BlockDamage>1</BlockDamage>
+			<FuelEconomy>1.5</FuelEconomy>
+
+			<SaberCollider>
+				<CapsuleCollider>
+					<Position x="0.0" y="0.0" z="6.0" />
+					<Rotation x="-180.0" y="0.0" z="0.0" />
+					<Capsule direction="Z" radius="1.5" height="12" />
+				</CapsuleCollider>
+			</SaberCollider>
+
+			<SaberEnableKey key="SaberKey"/>
+			<SaberModeToggle key="ToggleMode" />
+			<SelfDamageEnableToggle key="SelfDamage" />
+
+			<AssetBundleName name="BW2" />
+			<SaberEffect>PinkSaber</SaberEffect>
+			<SaberEffectPosition>
+				<Position x="0.0" y="0.0  " z="0.8" />
+				<Rotation x="-180.0" y="0.0" z="0.0" />
+				<Scale x="1.0" y="1.0" z="1.0" />
+			</SaberEffectPosition>
+		</AdSaberProp>
+	</Modules>
+	
+	<!-- Include to make block take damage. -->
+	<!-- <Health>20</Health> -->
+	
+	<!-- Optional.
+		 The game generates "stripped" versions of the prefab,
+		 these have some components and child objects removed and are used in MP where the full
+		 object is not always necessary.
+		 If you find that this stripping removes some components or child objects that you added to the prefab manually
+		 and need on the stripped version, you can include a list of objects to keep using this. -->
+	<!-- <KeepWhenStripped>
+		<Object>SomeObjectName</Object>
+	</KeepWhenStripped> -->
+	
+	<!-- Include to enable block to burn.
+		 The Trigger element is optional. -->
+	<!-- <FireInteraction burnDuration="5">
+		<SphereTrigger>
+			<Position x="0" y="0" z="0.61" />
+			<Radius>1.5</Radius>
+		</SphereTrigger>
+	</FireInteraction> -->
+	
+	<!-- Include to make block freezable. -->
+	<!-- <IceInteraction /> -->
+	
+	<!-- Optionally specify type of damage done to entities.
+		 Can be one of "Blunt", "Sharp", "Fire" -->
+	<!-- <DamageType>Blunt</DamageType> -->
+	
+	<Mesh name="BeamSaber"> <!-- Must be defined as a resource in the manifest. -->
+		<Position x="0.0" y="0.0" z="0.0" />
+		<Rotation x="0.0" y="0.0" z="0.0" />
+		<Scale x="1.0" y="1.0" z="1.0" />
+	</Mesh>
+	
+	<Texture name="BeamSaberBody_tex" /> <!-- Must be defined as a resource in the manifest. -->
+	
+	<Icon>
+		<Position x="-0.1" y="-0.05" z="-1.0" />
+		<Rotation x="-30.0" y="120.0" z="200.0" />
+		<Scale x="0.7" y="0.7" z="0.7" />
+	</Icon>
+	
+	<!-- Including this causes a direction arrow, like the one on wheels and other turnable blocks,
+		 to be displayed. The child elements define how and where it is displayed. -->
+	<!--<Arrow>
+		<Position x="0" y="0" z="0" />
+		<Rotation x="0" y="0" z="0" />
+		<Scale x="1" y="1" z="1" />
+	</Arrow>-->
+	
+	<!-- Optional.
+		 Both child elements are optional.
+		 Hammer can be used to specify the position and rotation of the end of the nail at the start of the hammer animation.
+		 Colliders can be used to specify a different set of colliders to use for the ghost.
+		 If it is not present, the colliders of the normal block will be used.
+		 It is also possible to specify ignoreForGhost attributes for some of the normal colliders to use the normal set of
+		 colliders with a few of them removed on the ghost.
+		 If the Colliders element here is present, all ignoreForGhost attributes are ignored. -->
+	<!-- <Ghost>
+		<Hammer>
+			<Position x="0" y="0" z="0.8" />
+			<Rotation x="0" y="0" z="0" />
+		</Hammer>
+		<Colliders>
+			<BoxCollider>
+				<Position x="0.0" y="0.0" z="0.0" />
+				<Rotation x="0.0" y="0.0" z="0.0" />
+				<Scale x="1.0" y="1.0" z="1.0" />
+			</BoxCollider>
+		</Colliders>
+	</Ghost> -->
+	
+	<Colliders>
+		<!-- TODO: Insert Collider definitions here.
+			 Examples: -->
+		<CapsuleCollider>
+			<Position x="0.0" y="0.0" z="0.0" />
+			<Rotation x="-90.0" y="0.0" z="0.0" />
+			<Capsule direction="Y" radius="0.2" height="0.4" />
+		</CapsuleCollider>
+	</Colliders>
+	
+	<BasePoint hasAddingPoint="false">
+		<Stickiness enabled="true" radius="0.6" />
+		<!-- Can only have motion if sticky -->
+		<Motion x="false" y="false" z="false" /> <!-- Optional -->
+	</BasePoint>
+	
+	<AddingPoints>
+		<!-- TODO: Insert AddingPoint definitions here. Example:-->
+		
+	</AddingPoints>
+</Block>
